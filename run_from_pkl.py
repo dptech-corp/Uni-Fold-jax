@@ -120,7 +120,8 @@ def main(argv):
         f'prot_{idx:05d}': p for idx, p in enumerate(FLAGS.pickle_paths)}
   else:                     # use basename of sub-directories as protein ids.
     sub_dirs = [
-        p for p in glob.glob(FLAGS.pickle_dir + '*') if os.path.isdir(p)]
+        p for p in glob.glob(os.path.join(FLAGS.pickle_dir, '*'))
+            if os.path.isdir(p)]
     protein_dict = {
         os.path.basename(p): os.path.join(p, "features.pkl")
             for p in sub_dirs}
