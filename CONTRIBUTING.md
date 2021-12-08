@@ -5,7 +5,7 @@ We welcome the community to join us in developing the repository together, inclu
 
 ## Developer Certificate of Origin
 
-Contributions to this project must be accompanied by a [Developer Certificate of Origin](https://github.com/dptech-corp/Uni-Fold/blob/main/DCO.txt). You (or your employer) retain the copyright to your contribution. The certificate only restrict you to use the same license in your contribution.
+Contributions to this project must be accompanied by a [Developer Certificate of Origin](./DCO.txt). You (or your employer) retain the copyright to your contribution. The certificate only restrict you to use the same license in your contribution.
 
 ## Code reviews
 
