@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # Copyright 2021 Beijing DP Technology Co., Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,28 +26,26 @@ conda install -y -c conda-forge openmm=7.5.1 pdbfixer cudatoolkit=11.1
 conda install -y -c bioconda hmmer hhsuite==3.3.0 kalign2
 
 # update openmm
-work_path=$(pwd)
-python_path=$(which python)
-cd $(dirname $(dirname $python_path))/lib/python3.8/site-packages
-patch -p0 < $work_path/openmm.patch
-cd $work_path
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+SITE_PACKAGES_DIR="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')" # path to /path/to/conda/envs/XXX/lib/pythonX.Y/site-packages
+patch -d "${SITE_PACKAGES_DIR}" -p0 <"${SCRIPT_DIR}/openmm.patch"
 
 #######################################
 # dependencies of training Uni-Fold   #
 #######################################
 
 # install openmpi
-wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz
-gunzip -c openmpi-4.1.1.tar.gz | tar xf -
-cd openmpi-4.1.1
-./configure --prefix=/usr/local
-make all install
-cd ..
+wget -O - https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz |
+  tar -xz --strip-components=1 --one-top-level=openmpi &&
+  (
+    cd openmpi &&
+      ./configure --prefix=/usr/local &&
+      make all install
+  )
 
 # install conda and pip packages
 conda install -y -c nvidia cudnn==8.0.4
-pip install --upgrade pip \
-    && pip install -r ./requirements.txt \
-    && pip install jaxlib==0.1.67+cuda111 -f \
+pip install --upgrade pip &&
+  pip install -r ./requirements.txt &&
+  pip install jaxlib==0.1.67+cuda111 -f \
     https://storage.googleapis.com/jax-releases/jax_releases.html
-
