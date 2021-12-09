@@ -17,25 +17,25 @@
 # Downloads and unzips the PDB70 database for Uni-Fold.
 #
 # Usage: bash download_pdb70.sh /path/to/download/directory
+
 set -e
 
 if [[ $# -eq 0 ]]; then
-    echo "Error: download directory must be provided as an input argument."
-    exit 1
+  echo "Error: download directory must be provided as an input argument."
+  exit 1
 fi
 
-if ! command -v aria2c &> /dev/null ; then
-    echo "Error: aria2c could not be found. Please install aria2c (sudo apt install aria2)."
-    exit 1
+if ! command -v aria2c &>/dev/null; then
+  echo "Error: aria2c could not be found. Please install aria2c (sudo apt install aria2)."
+  exit 1
 fi
 
 DOWNLOAD_DIR="$1"
 ROOT_DIR="${DOWNLOAD_DIR}/pdb70"
 SOURCE_URL="http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/pdb70_from_mmcif_200401.tar.gz"
-BASENAME=$(basename "${SOURCE_URL}")
+BASENAME="$(basename "${SOURCE_URL}")"
 
-mkdir --parents "${ROOT_DIR}"
+mkdir -p "${ROOT_DIR}"
 aria2c "${SOURCE_URL}" --dir="${ROOT_DIR}"
-tar --extract --verbose --file="${ROOT_DIR}/${BASENAME}" \
-  --directory="${ROOT_DIR}"
+tar -xvzf "${ROOT_DIR}/${BASENAME}" -C "${ROOT_DIR}"
 rm "${ROOT_DIR}/${BASENAME}"

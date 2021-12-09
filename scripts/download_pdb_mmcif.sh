@@ -17,21 +17,22 @@
 # Downloads, unzips and flattens the PDB database for Uni-Fold.
 #
 # Usage: bash download_pdb_mmcif.sh /path/to/download/directory
+
 set -e
 
 if [[ $# -eq 0 ]]; then
-    echo "Error: download directory must be provided as an input argument."
-    exit 1
+  echo "Error: download directory must be provided as an input argument."
+  exit 1
 fi
 
-if ! command -v aria2c &> /dev/null ; then
-    echo "Error: aria2c could not be found. Please install aria2c (sudo apt install aria2)."
-    exit 1
+if ! command -v aria2c &>/dev/null; then
+  echo "Error: aria2c could not be found. Please install aria2c (sudo apt install aria2)."
+  exit 1
 fi
 
-if ! command -v rsync &> /dev/null ; then
-    echo "Error: rsync could not be found. Please install rsync."
-    exit 1
+if ! command -v rsync &>/dev/null; then
+  echo "Error: rsync could not be found. Please install rsync."
+  exit 1
 fi
 
 DOWNLOAD_DIR="$1"
@@ -40,7 +41,7 @@ RAW_DIR="${ROOT_DIR}/raw"
 MMCIF_DIR="${ROOT_DIR}/mmcif_files"
 
 echo "Running rsync to fetch all mmCIF files (note that the rsync progress estimate might be inaccurate)..."
-mkdir --parents "${RAW_DIR}"
+mkdir -p "${RAW_DIR}"
 rsync --recursive --links --perms --times --compress --info=progress2 --delete --port=33444 \
   rsync.rcsb.org::ftp_data/structures/divided/mmCIF/ \
   "${RAW_DIR}"
@@ -49,8 +50,8 @@ echo "Unzipping all mmCIF files..."
 find "${RAW_DIR}/" -type f -iname "*.gz" -exec gunzip {} +
 
 echo "Flattening all mmCIF files..."
-mkdir --parents "${MMCIF_DIR}"
-find "${RAW_DIR}" -type d -empty -delete  # Delete empty directories.
+mkdir -p "${MMCIF_DIR}"
+find "${RAW_DIR}" -type d -empty -delete # Delete empty directories.
 for subdir in "${RAW_DIR}"/*; do
   mv "${subdir}/"*.cif "${MMCIF_DIR}"
 done
