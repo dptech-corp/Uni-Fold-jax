@@ -89,6 +89,50 @@ FLAGS = flags.FLAGS
 
 MAX_TEMPLATE_HITS = 20
 
+# Set to database directory with Uniref90, MGnify, and BFD, Uniclust30 database.
+# Path to the Uniref90 database for use by JackHMMER.
+uniref90_database_path = os.path.join(
+    FLAGS.data_dir, 'uniref90', 'uniref90.fasta') \
+    if FLAGS.uniref90_database_path is None \
+    else FLAGS.uniref90_database_path
+
+# Path to the MGnify database for use by JackHMMER.
+mgnify_database_path = os.path.join(
+    FLAGS.data_dir, 'mgnify', 'mgy_clusters.fa') \
+    if FLAGS.mgnify_database_path is None \
+    else FLAGS.mgnify_database_path
+
+# Path to the BFD database for use by HHblits.
+bfd_database_path = os.path.join(
+    FLAGS.data_dir, 'bfd',
+    'bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt') \
+    if FLAGS.bfd_database_path is None \
+    else FLAGS.bfd_database_path
+
+# Path to the Uniclust30 database for use by HHblits.
+uniclust30_database_path = os.path.join(
+    FLAGS.data_dir, 'uniclust30', 'UniRef30_2020_06/UniRef30_2020_06') \
+    if FLAGS.uniclust30_database_path is None \
+    else FLAGS.uniclust30_database_path
+
+# Path to the PDB70 database for use by HHsearch.
+pdb70_database_path = os.path.join(
+    FLAGS.data_dir, 'pdb70', 'pdb70') \
+    if FLAGS.pdb70_database_path is None \
+    else FLAGS.pdb70_database_path
+
+# Path to a directory with template mmCIF structures, each named <pdb_id>.cif')
+template_mmcif_dir = os.path.join(
+    FLAGS.data_dir, 'pdb_mmcif', 'mmcif_files') \
+    if FLAGS.template_mmcif_dir is None \
+    else FLAGS.template_mmcif_dir
+
+# Path to a file mapping obsolete PDB IDs to their replacements.
+obsolete_pdbs_path = os.path.join(
+    FLAGS.data_dir, 'pdb_mmcif', 'obsolete.dat') \
+    if FLAGS.obsolete_pdbs_path is None \
+    else FLAGS.obsolete_pdbs_path
+
 
 def get_fasta_paths(fasta_dir: str):
   fasta_paths = []
