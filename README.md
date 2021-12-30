@@ -46,7 +46,7 @@ This command automatically processes all FASTA files under `fasta_dir`, and dump
 
 ### 2.3 Organize your training data.
 
-Uni-Fold uses the class [`DataSystem`](./unifold/train/data_system.py) to automatically sample and load the training proteins. To make everything goes right, you shall pay attention to how the training data is organized. Two directories should be established, one with input features (`features.pkl` files, referred to as `features_dir`) and the other with labels (`*.cif` files, referred to as `mmcif_dir`). The feature directory should have its files named as `<pdb_id>_<model_id>_<chain_id>/features.pkl`, e.g. `1ak0_1_A/features.pkl`, and the label directory should have its files named as `<pdb_id>.cif`, e.g. `1ak0.cif`. See [`./example_data/features`](./example_data/features) and [`./example_data/mmcif`](./example_data/mmcif) for instances of the two directories. Notably, users shall make sure that all proteins used for training have their corresponding labels. This is checked by `DataSystem.check_completeness()`.
+Uni-Fold uses the class [`DataSystem`](./unifold/train/data_system.py) to automatically sample and load the training proteins. To make everything goes right, you shall pay attention to how the training data is organized. Two directories should be established, one with input features (`features.pkl` files, referred to as `features_dir`) and the other with labels (`*.cif` files, referred to as `mmcif_dir`). The feature directory should have its files named as `<pdb_id>_<model_id>_<chain_id>/features.pkl`, e.g. `101m_1_A/features.pkl`, and the label directory should have its files named as `<pdb_id>.cif`, e.g. `101m.cif`. See [`./example_data/features`](./example_data/features) and [`./example_data/mmcif`](./example_data/mmcif) for instances of the two directories. Notably, users shall make sure that all proteins used for training have their corresponding labels. This is checked by `DataSystem.check_completeness()`.
 
 ## 3. Train Uni-Fold.
 
@@ -112,7 +112,7 @@ or
 
 ```bash
 python run_from_pkl.py \
-  --pickle_paths ./example_data/features/1ak0_1_A/features.pkl \
+  --pickle_paths ./example_data/features/101m_1_A/features.pkl \
   --model_names unifold \
   --model_paths /path/to/unifold.npz \
   --output_dir ./out
@@ -126,7 +126,7 @@ Essentially, inferring the structures from given FASTA files includes two steps,
 
 ```bash
 python run_from_pkl.py \
-  --fasta_paths ./example_data/fasta/1ak0_1_A.fasta \
+  --fasta_paths ./example_data/fasta/101m_1_A.fasta \
   --model_names model_2 \
   --model_paths /path/to/model_2.npz \
   --data_dir /path/to/database/directory

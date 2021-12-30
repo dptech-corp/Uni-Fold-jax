@@ -86,7 +86,7 @@ class DataSystem:
   def load(self, prot_name: str):
     raw_features = utils.load_features(
         os.path.join(self.dc.features_dir, prot_name+'/features.pkl'))
-    prot_info = prot_name.split('_')    # assert naming styles are in `1ak0_A` or `1ak0_1_A`
+    prot_info = prot_name.split('_')    # assert naming styles are in `101m_A` or `101m_1_A`
     pdb_id, chain_id = prot_info[0], prot_info[-1]
     raw_labels = utils.load_labels(
         cif_path=os.path.join(self.dc.mmcif_dir, pdb_id+'.cif'),
