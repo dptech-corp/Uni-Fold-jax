@@ -12,4 +12,4 @@ mpi4jax==0.3.2
 mpi4py==3.1.1
 numpy==1.19.5
 scipy==1.7.0
-tensorflow-cpu==2.5.0
+tensorflow-cpu==2.5.3
