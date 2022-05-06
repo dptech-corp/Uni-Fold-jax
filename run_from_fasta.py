@@ -238,7 +238,7 @@ def main(argv):
   for id, fasta_path in protein_dict.items():
     try:
       predict_from_fasta(
-          fasta_path=fasta_paths,
+          fasta_path=fasta_path,
           name=id,
           output_dir=FLAGS.output_dir,
           data_pipeline=data_pipeline,
