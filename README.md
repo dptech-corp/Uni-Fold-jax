@@ -1,6 +1,14 @@
 # Uni-Fold: Training your own deep protein-folding models.
 
-This package provides an implementation of a trainable, Transformer-based deep protein folding model. We modified the open-source code of DeepMind AlphaFold v2.0 and provided code to train the model from scratch. See the [reference](https://doi.org/10.1038/s41586-021-03819-2) and the [repository](https://github.com/deepmind/alphafold) of DeepMind AlphaFold v2.0. To train your own Uni-Fold models, please follow the steps below:
+This package provides an implementation of a trainable, Transformer-based deep protein folding model. We modified the open-source code of DeepMind AlphaFold v2.0 and provided code to train the model from scratch. See the [reference](https://doi.org/10.1038/s41586-021-03819-2) and the [repository](https://github.com/deepmind/alphafold) of DeepMind AlphaFold v2.0. Note that the service of Uni-Fold protein structure prediction is FREELY available at Hermite™, the New-Generation Drug Design Platform Powered by AI, Physics, and Computing Platform developed by DP Technology. (https://hermite.dp.tech/)
+
+## NEWEST!
+
+[2022-05-25] Uni-Fold service on Hermite™ now supports Multimer structure prediction. Come and try at https://hermite.dp.tech/ !
+
+[2022-04-22] Uni-Fold is now moved from JAX to PyTorch (Uni-Fold v1.1.0). The performance on CASP14 targets are now at 86% Cα-lDDT, slightly above AlphaFold v2.0. We have not released the PyTorch code yet, while the service on Hermite™ is updated to the newest.
+
+To train your own Uni-Fold models, please follow the steps below:
 
 ## 1. Install the environment.
 
