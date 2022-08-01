@@ -4,6 +4,8 @@ This package provides an implementation of a trainable, Transformer-based deep p
 
 ## NEWEST!
 
+[2022-08-01] We release [Uni-Fold PyTorch](https://github.com/dptech-corp/Uni-Fold) as a thoroughly open-source platform for developing protein models beyond AlphaFold. This repo is now renamed to Uni-Fold-JAX. Come and try the new version!
+
 [2022-05-25] Uni-Fold service on Hermite™ now supports Multimer structure prediction. Come and try at https://hermite.dp.tech/ !
 
 [2022-04-22] Uni-Fold is now moved from JAX to PyTorch (Uni-Fold v1.1.0). The performance on CASP14 targets are now at 86% Cα-lDDT, slightly above AlphaFold v2.0. We have not released the PyTorch code yet, while the service on Hermite™ is updated to the newest.
