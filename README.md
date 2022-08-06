@@ -198,3 +198,19 @@ Use of the third-party software, libraries or code may be governed by separate t
 
 Uni-Fold is an ongoing project. Our target is to design better protein folding models and to apply them in real scenarios.
 We welcome the community to join us in developing the repository together, including but not limited to 1) reports and fixes of bugs,2) new features and 3) better interfaces. Please refer to [`CONTRIBUTING.md`](./CONTRIBUTING.md) for more information.
+
+### 6.4 Cite this work.
+
+If you use the code or the web service of Uni-Fold-JAX, please cite
+
+```bibtex
+@article {uni-fold,
+	author = {Li, Ziyao and Liu, Xuyang and Chen, Weijie and Shen, Fan and Bi, Hangrui and Ke, Guolin and Zhang, Linfeng},
+	title = {Uni-Fold: An Open-Source Platform for Developing Protein Folding Models beyond AlphaFold},
+	year = {2022},
+	doi = {10.1101/2022.08.04.502811},
+	URL = {https://www.biorxiv.org/content/early/2022/08/06/2022.08.04.502811},
+	eprint = {https://www.biorxiv.org/content/early/2022/08/06/2022.08.04.502811.full.pdf},
+	journal = {bioRxiv}
+}
+```
